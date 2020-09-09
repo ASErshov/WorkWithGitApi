@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header';
+import MainPage from './features/MainPage';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
+import * as locales from '@material-ui/core/locale';
+
+const theme = createMuiTheme(
+  locales['ruRU']
+);
 
 function App() {
   return (
-    <Header>Добро пожаловать</Header>
+    <MuiThemeProvider theme={theme}>
+    <MainPage/>
+    </MuiThemeProvider>
   );
 }
 
