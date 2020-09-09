@@ -1,0 +1,9 @@
+.table{
+    max-width: 90%;
+    margin-left:5%
+}
+.error{
+    color : #1976D2;
+    width: 100%;
+    text-align: center;
+}

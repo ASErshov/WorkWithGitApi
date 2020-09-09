@@ -1,5 +1,5 @@
 import React from 'react'
-import {TableRow, TableCell, TableBody, ListItem } from '@material-ui/core'
+import {TableRow, TableCell, TableBody } from '@material-ui/core'
 import styles from './CustomTableBody.module.css'
 
 export type TableBodyProps= {
