@@ -7,22 +7,26 @@ const MainRepo = new MainRepository()
 
 export type queryParams = {
   q: string,
-  sort: string,
-  order: string,
-  page: number,
-  per_page: number,
+  params:{
+    sort: string,
+    order: string,
+    page: number,
+    per_page: number,
+  }
 } 
 
 export function* fetchRepos(action: ReturnType<typeof actions.fetchRepos>) {
   try {
-    const q:string = `${action.payload.text?action.payload.text+'+':''}${action.payload.license?'license:'+action.payload.license+'+':''}language:js`
+    const q:string = encodeURI(`${action.payload.text?action.payload.text+'+':''}${action.payload.license?'license:'+action.payload.license+'+':''}language:js`)
 
     const params: queryParams = {
       q: q,
-      sort: 'stars',
-      order: 'desc',
-      page: action.payload.page,
-      per_page: action.payload.perPage
+      params:{
+        sort: 'stars',
+        order: 'desc',
+        page: action.payload.page,
+        per_page: action.payload.perPage
+      }
     }
 
     const data:{items: Array<Repo>} = yield call(MainRepo.getRepos, params)

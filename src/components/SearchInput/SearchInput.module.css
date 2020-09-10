@@ -1,0 +1,12 @@
+.submit{
+    background-color: #1976D2 !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
+}
+.submit:hover{
+    background-color: #1976D2 !important;
+}
+.form{
+    display: flex;
+    flex-wrap: nowrap;
+}
