@@ -2,9 +2,11 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
 
+import styles from './SearchInput.module.css'
 import propStyles from '../../features/MainPage/MainPage.module.css'
 
 import SearchInput from './index'
+import { Button } from '@material-ui/core'
 
 describe('<SearchInput />', () => {
   const onClick = jest.fn()
@@ -35,12 +37,12 @@ describe('<SearchInput />', () => {
   it('Passed events is valid', () => {
     const wrapper = mount(React.cloneElement(Component))
 
-    wrapper.find('form').simulate('submit')
+    wrapper.find(Button).simulate('click')
 
     expect(onClick.mock.calls.length).toBe(1)
 
-    wrapper.find('form').simulate('submit')
-    wrapper.find('form').simulate('submit')
+    wrapper.find(Button).simulate('click')
+    wrapper.find(Button).simulate('click')
 
     expect(onClick.mock.calls.length).toBe(3)
   })
@@ -48,6 +50,6 @@ describe('<SearchInput />', () => {
   it('JSX has been rendered is valid', () => {
     const wrapper = mount(Component)
     expect(wrapper.find('.MuiButton-label').text()).toEqual('Поиск')
-    expect(wrapper.find('form').hasClass(propStyles.search)).toBeTruthy()
+    expect(wrapper.find(`.${styles.form}`).hasClass(propStyles.search)).toBeTruthy()
   })
 })

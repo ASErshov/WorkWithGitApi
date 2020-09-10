@@ -1,4 +1,4 @@
-import { Repo } from './index';
+import { Repo, License } from './index';
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { actions } from '../ducks'
 import MainRepository from '../MainRepository';
@@ -31,7 +31,7 @@ export function* fetchRepos(action: ReturnType<typeof actions.fetchRepos>) {
 
     const data:{items: Array<Repo>} = yield call(MainRepo.getRepos, params)
 
-    if ((<{items: Array<Repo>}>data).items.length) {
+    if (data.items.length) {
       yield put(actions.fetchReposSuccses((<{items: Array<Repo>}>data).items))
     } else {
       yield put(actions.fetchReposNotFound('Not Found'))
@@ -41,6 +41,17 @@ export function* fetchRepos(action: ReturnType<typeof actions.fetchRepos>) {
   }
 }
 
+export function* fetchLicenses(){
+  try{
+    const data: Array<License> = yield call(MainRepo.getLicenses)
+
+    yield put(actions.fetchLicensesSuccses(data))
+  } catch(e){
+    yield put(actions.fetchLicensesError())
+  }
+}
+
 export default function* actionWatcher() {
   yield takeLatest(actions.fetchRepos, fetchRepos)
+  yield takeLatest(actions.fetchLicenses, fetchLicenses)
 }

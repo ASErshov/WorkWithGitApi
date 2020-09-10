@@ -19,11 +19,11 @@ const RepoTable: React.FC<RepoTableProps> = ({className,paginationClassName,rows
     const query = useSelector(getQueryParams)
 
     const handleChangePage = ( event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,newPage:number) => {
-        dispatch(actions.fetchRepos({text: query.text, page:newPage+1, perPage:query.perPage}))
+        dispatch(actions.fetchRepos({license: query.license, text: query.text, page:newPage+1, perPage:query.perPage}))
       };
     
     const handleChangeRowsPerPage = ( event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        dispatch(actions.fetchRepos({text: query.text, page:1, perPage:parseInt(event.target.value, 10)}))
+        dispatch(actions.fetchRepos({license: query.license, text: query.text, page:1, perPage:parseInt(event.target.value, 10)}))
       };
     return(
         <TableContainer >
