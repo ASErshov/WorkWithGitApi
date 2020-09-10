@@ -20,16 +20,17 @@ export type ReposState ={
     repos: Array<Repo>,
     isLoading: boolean,
     errorMassage: string|null,
-    page: number,
-    perPage: number,
+    query: queryParams,
 }
 
 const initialState:ReposState ={
     repos: [],
     isLoading: false,
     errorMassage: null,
-    page: 0,
-    perPage: 10,
+    query:{
+        page: 0,
+        perPage: 10,
+    }
 }
 export const reposSlice = createSlice({
     name: 'repo',
@@ -39,8 +40,7 @@ export const reposSlice = createSlice({
             state.isLoading = true
             state.errorMassage = null
             state.repos = []
-            state.page = action.payload.page
-            state.perPage= action.payload.perPage
+            state.query = action.payload
         },
         fetchReposNotFound:(state: Draft<ReposState>, action:PayloadAction<string>):void =>{
             state.errorMassage = action.payload
