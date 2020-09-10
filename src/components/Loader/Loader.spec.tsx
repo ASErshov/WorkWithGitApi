@@ -6,7 +6,7 @@ import styles from './Loader.module.css'
 
 import Loader from './index'
 
-describe('<Button />', () => {
+describe('<Loader />', () => {
   const Component = (
     <Loader/>
   )
@@ -18,9 +18,4 @@ describe('<Button />', () => {
   })
 
 
-  it('JSX has been rendered is valid', () => {
-    const wrapper = mount(Component)
-
-    expect(wrapper.find('button').hasClass(styles.loading)).toBeTruthy()
-  })
 })
