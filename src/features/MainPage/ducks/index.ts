@@ -16,8 +16,14 @@ export type Repo = {
     stargazers_count: number,
 }
 
+export type License = {
+    key: string,
+    name: string,
+}
+
 export type ReposState ={
     repos: Array<Repo>,
+    licenses: Array<License>
     isLoading: boolean,
     errorMassage: string|null,
     query: queryParams,
@@ -25,6 +31,7 @@ export type ReposState ={
 
 const initialState:ReposState ={
     repos: [],
+    licenses: [],
     isLoading: false,
     errorMassage: null,
     query:{
@@ -52,7 +59,17 @@ export const reposSlice = createSlice({
         },
         fetchReposError: (state: Draft<ReposState>): void =>{
             state.isLoading = false
-        }
+        },
+        fetchLicenses: (state: Draft<ReposState>): void =>{
+            state.isLoading = true
+        },
+        fetchLicensesSuccses: (state: Draft<ReposState>, action:PayloadAction<Array<License>>): void =>{
+            state.licenses = action.payload
+            state.isLoading = false
+        },
+        fetchLicensesError: (state: Draft<ReposState>): void =>{
+            state.isLoading = false
+        },
     }
 })
 

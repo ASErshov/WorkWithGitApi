@@ -23,7 +23,7 @@ const SearchInput: React.FC<SearchInputProps> = ({handleSearch, lable, lableWidt
     }
 
     return(
-        <form action='/#' autoComplete="off" onSubmit={handleSubmit(text)} className={cn(styles.form, className)}>
+        <div className={cn(styles.form, className)}>
         <FormControl fullWidth variant="outlined" size='small'>
         {lable && <InputLabel htmlFor="text">{lable}</InputLabel>}
         <OutlinedInput
@@ -34,10 +34,10 @@ const SearchInput: React.FC<SearchInputProps> = ({handleSearch, lable, lableWidt
             onChange = {handleChange}
         />
         </FormControl>
-        <Button variant="contained" type='submit' className={styles.submit}>
+        <Button variant="contained" type='submit' className={styles.submit} onClick={handleSubmit(text)}>
             {buttonText}
         </Button>
-        </form>
+        </div>
     )
 }
 
