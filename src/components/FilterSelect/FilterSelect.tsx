@@ -4,6 +4,7 @@ import { MenuItem, Select, InputLabel } from '@material-ui/core'
 export type FilterSelectProps ={
     handleSelect(value:string|number): void,
     lable: string,
+    className?: string,
     selected?: string|number,
     items: Array<{
         name: string,
@@ -11,14 +12,14 @@ export type FilterSelectProps ={
     }>
 }
 
-const FilterSelect: React.FC<FilterSelectProps> = ({handleSelect, lable, items, selected}): React.ReactElement =>{
+const FilterSelect: React.FC<FilterSelectProps> = ({handleSelect, lable, items, selected, className}): React.ReactElement =>{
 
     const handleChange = (e:React.ChangeEvent<{ value: unknown }>)=>{
         handleSelect(e.target.value as string|number)
     }
 
     return (
-        <div>
+        <div className={className}>
             <InputLabel id="label">{lable}</InputLabel>
             <Select
             labelId="label"

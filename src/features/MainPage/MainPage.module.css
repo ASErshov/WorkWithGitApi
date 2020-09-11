@@ -1,3 +1,6 @@
+.filter_select{
+    max-width: 20%;
+}
 .filter{
     display: flex;
     justify-content: space-around;

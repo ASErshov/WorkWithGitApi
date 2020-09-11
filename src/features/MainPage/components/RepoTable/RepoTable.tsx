@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Dispatch} from 'redux'
 import {actions} from '../../ducks'
 import { getQueryParams } from '../../ducks/selectors';
+import styles from './RepoTable.module.css'
 
 export type RepoTableProps={
     rows: Array<Array<string|number>>
@@ -25,26 +26,30 @@ const RepoTable: React.FC<RepoTableProps> = ({className,paginationClassName,rows
     const handleChangeRowsPerPage = ( event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         dispatch(actions.fetchRepos({license: query.license, text: query.text, page:1, perPage:parseInt(event.target.value, 10)}))
       };
-    return(
-        <TableContainer >
+    return(<>
+        <TableContainer className={styles.table}>
             <Table
+                stickyHeader = {true}
                 size={'medium'}
                 className={className}
             >
                 <CustomTableHead lables={headers} />
                 <CustomTableBody records={rows}/>
             </Table>
-            <TablePagination
-                    rowsPerPageOptions={[10, 15, 25, 50]}
-                    component="div" 
-                    count={-1}
-                    rowsPerPage={query.perPage}
-                    page={query.page-1}
-                    onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
-                    className={paginationClassName}
-                />
         </TableContainer>
+        {query.perPage === rows.length &&
+        <TablePagination
+            rowsPerPageOptions={[10, 15, 25, 50]}
+            component="div" 
+            count={-1}
+            rowsPerPage={query.perPage}
+            page={query.page-1}
+            onChangePage={handleChangePage}
+            onChangeRowsPerPage={handleChangeRowsPerPage}
+            className={paginationClassName}
+        />
+        }
+        </>
     )
 }
 
