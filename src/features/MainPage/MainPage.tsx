@@ -53,6 +53,7 @@ const MainPage: React.FC = (): React.ReactElement =>{
           lable = 'Фильтр по лицензии'
           items = {licenses}
           selected = {query.license}
+          className={styles.filter_select}
         />
       </div>
       { loading && <Loader/>}
