@@ -4,7 +4,13 @@
 В проекте настроена серверная пагинация,
 Есть лоадер отображающий процесс загрузки данных.
 
+### Проект крутиться на github Pages
+https://asershov.github.io/WorkWithGitApi/
 
+### Полный код проекта можно посмотеть в ПР develop в master
+https://github.com/ASErshov/WorkWithGitApi/pull/8
+
+## Если вы решили запустить проект у себя на машинке 
 Для установки необходимых зависимостей используйте 
 ### `yarn install`
 Для запуска приложения в режиме разроботки
@@ -16,6 +22,7 @@
 - React
 - Redux
 - Redux-Saga
+- Jest и Enzyme для тестов
 - Запросы выполняются при помощи axios
 - Для удобства работы со стейтом используется Redux Toolkit
 - Асинхронное взаимодействие с сервером - [Sagas](https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html)
