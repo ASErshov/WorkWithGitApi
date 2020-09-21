@@ -1,0 +1,22 @@
+.filter_select{
+    max-width: 20%;
+}
+.filter{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.search{
+    width: 50%;
+    margin-top: 3rem;
+    margin-left: 10%
+}
+.table{
+    max-width: 90%;
+    margin-left:5%
+}
+.error{
+    color : #1976D2;
+    width: 100%;
+    text-align: center;
+}
